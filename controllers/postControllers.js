@@ -28,7 +28,8 @@ function elimina(req, res) {
     const id = parseInt(req.params.id);
     let indice = lista.indexOf(lista.find((post) => id === post.id));
     lista.splice(indice, 1);
-    res.json(lista);
+    console.log(lista);
+    res.status(204).send();
 }
 
 
