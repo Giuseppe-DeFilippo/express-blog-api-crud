@@ -9,7 +9,10 @@ function index(req, res) {
 function show(req, res) {
     const id = parseInt(req.params.id);
     const post = lista.find((post) => id === post.id);
-    res.json(post)
+    if (post === undefined) {
+        res.status(404).send("è un errore")
+    } else { res.json(post) }
+
 }
 function create(req, res) {
     const nuovoPost = req.body;
@@ -29,7 +32,11 @@ function elimina(req, res) {
     let indice = lista.indexOf(lista.find((post) => id === post.id));
     lista.splice(indice, 1);
     console.log(lista);
-    res.status(204).send();
+    if (indice === -1) {
+        res.status(404).send("è un errore")
+    } else {
+        res.status(204).send()
+    };
 }
 function tagSearch(req, res) {
     const tagScelto = (req.params.tag);
@@ -37,7 +44,5 @@ function tagSearch(req, res) {
     //restituisce un booleano per sapere se ce.some
     res.json(listaPost);
 }
-
-
 
 module.exports = { index, show, create, update, elimina, tagSearch };
