@@ -15,10 +15,11 @@ const express = require("express")
 const app = express()
 const PORT = 3000
 const bodyParser = require('body-parser')
+// const postRouter = require("./routers/post.js")
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static("public"));
-app.use("/bacheca", require("./controllers/postControllers.js"));
+app.use("/bacheca", require("./routers/post.js"));
 // app.use("/animale", require("./routers/animale.js"))
 
 app.get("/", (req, res) => {
