@@ -31,7 +31,13 @@ function elimina(req, res) {
     console.log(lista);
     res.status(204).send();
 }
+function tagSearch(req, res) {
+    const tagScelto = (req.params.tag);
+    const listaPost = lista.filter((post) => post.tags.some((tag) => tag === tagScelto));
+    //restituisce un booleano per sapere se ce.some
+    res.json(listaPost);
+}
 
 
 
-module.exports = { index, show, create, update, elimina };
+module.exports = { index, show, create, update, elimina, tagSearch };
