@@ -1,9 +1,17 @@
 const express = require("express")
 const router = express.Router();
-const { index, show } = require("../controllers/listaUtentiController.js")
+const { index, show, create, update, elimina, tagSearch } = require("../controllers/listaUtentiController.js")
 
 router.get("/", index);
 
 router.get("/:id", show);
+
+router.post("/", create);
+
+router.put("/:id", update);
+
+router.delete("/:id", elimina);
+
+router.get("/tagSearch/:tag", tagSearch);
 
 module.exports = router
