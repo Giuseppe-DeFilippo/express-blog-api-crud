@@ -18,23 +18,30 @@ function create(req, res) {
     const nuovoPost = req.body;
     nuovoPost.id = lista.length + 1;
     lista.push(nuovoPost);
+    console.log(nuovoPost);
+
     res.json(lista);
 }
+//  In Update, controllare se il parametro si riferisce ad un post esistente, in caso contrario, rispondere con uno stato 404 e un messaggio d’errore, sempre in formato JSON.
 function update(req, res) {
     const id = parseInt(req.params.id);
     const modificaPost = req.body;
     let indice = lista.indexOf(lista.find((post) => id === post.id));
-    lista.splice(indice, 1, modificaPost);
-    res.json(lista);
+    if (indice === -1) {
+        res.status(404).send("non esiste")
+    } else {
+        lista.splice(indice, 1, modificaPost);
+        res.json(lista);
+    }
 }
 function elimina(req, res) {
     const id = parseInt(req.params.id);
     let indice = lista.indexOf(lista.find((post) => id === post.id));
-    lista.splice(indice, 1);
     console.log(lista);
     if (indice === -1) {
         res.status(404).send("è un errore")
     } else {
+        lista.splice(indice, 1);
         res.status(204).send()
     };
 }
