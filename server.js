@@ -14,6 +14,8 @@ app.get("/", (req, res) => {
 })
 app.use("/utenti", require("./routers/listaUtenti.js"))
 app.use("/macchine", require("./routers/macchine.js"))
+
+
 app.listen(PORT, () => {
     console.log(`Server in esecuzione su http://localhost:${PORT}`);
 });

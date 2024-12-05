@@ -8,8 +8,8 @@ router.get("/:id", show);
 
 router.post("/", create);
 
-router.put("/id:", update);
+router.put("/:id", update);
 
-router.delete("/id:", elimina);
+router.delete("/:id", elimina);
 
 module.exports = router;

@@ -20,10 +20,11 @@ function create(req, res) {
 }
 
 function update(req, res) {
-    const id = (req.params.id);
-    const modificaMacchina = (req.params.body);
+    const id = parseInt(req.params.id);
+    const modificaMacchina = (req.body);
     let indice = car.indexOf(car.find((macchina) => id === macchina.id));
     car.splice(indice, 1, modificaMacchina);
+    res.send(`hai modificato:${(JSON.stringify(car))}`)
 }
 function elimina(req, res) {
     const id = (req.params.id);

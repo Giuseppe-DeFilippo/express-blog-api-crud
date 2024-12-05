@@ -12,6 +12,6 @@ router.put("/:id", update);
 
 router.delete("/:id", elimina);
 
-router.get("/tagSearch/:tag", tagSearch);
+router.get("/tagUsersSearch/:tag", tagSearch);
 
 module.exports = router
