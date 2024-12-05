@@ -3,6 +3,7 @@
 
 const lista = require("../data/listaPost");
 const listaUtenti = require("../data/listaUtenti");
+const car = require("../data/macchine");
 
 function index(req, res) {
     res.json(listaUtenti);
@@ -11,7 +12,9 @@ function index(req, res) {
 function show(req, res) {
     const id = parseInt(req.params.id);
     const idUtenti = listaUtenti.find((utente) => utente.id === id);
-    res.json(idUtenti);
+    if (idUtenti === undefined) {
+        res.status(404).send("è un errore")
+    } else { res.json(car) }
 }
 
 function create(req, res) {

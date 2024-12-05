@@ -7,7 +7,10 @@ function index(req, res) {
 function show(req, res) {
     const id = parseInt(req.params.id);
     const cercaMacchina = car.find((macchina) => macchina.id === id);
-    res.json(cercaMacchina);
+    if (cercaMacchina === undefined) {
+        res.status(404).send("è un errore")
+    } else { res.json(car) }
+
 }
 function create(req, res) {
     const nuovaMacchina = (req.body);
