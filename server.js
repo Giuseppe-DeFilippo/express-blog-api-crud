@@ -5,7 +5,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const port = process.env.PORT || 3000;
+const postRouter = require("./routers/post.js");
+const PORT = 3000;
 
 //middleware
 app.use(bodyParser.json());
@@ -15,5 +16,5 @@ app.use(cors());
 app.use("/api/post", postRouter);
 
 app.listen(process.env.port, () => {
-    console.log(`Server in esecuzione su http://localhost:${process.env.port}`);
+    console.log(`Server in esecuzione su http://localhost:${PORT}`);
 }); 
