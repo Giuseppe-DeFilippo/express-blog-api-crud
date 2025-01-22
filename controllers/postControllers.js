@@ -1,17 +1,26 @@
-const lista = require("./../data/listaPost.js");
-
+// const lista = require("./../data/listaPost.js");
+const connection = require("../connection");
 function index(req, res) {
-    res.json({
-        conteggio: lista.length,
-        post: lista
-    })
+    const sql = "SELECT * FROM `posts`";
+    connection.query(sql, (err, results) => {
+        if (err) {
+            console.error("errore non va ", err);
+            return res.status(500).json({ error: "errore nel database" });
+        }
+        res.json({
+            conteggio: results.length,
+            post: results
+        });
+    });
 }
+
 function show(req, res) {
     const id = parseInt(req.params.id);
-    const post = lista.find((post) => id === post.id);
-    if (post === undefined) {
-        res.status(404).send("è un errore")
-    } else { res.json(post) }
+    // const post = lista.find((post) => id === post.id);
+    // if (post === undefined) {
+    //     res.status(404).send("è un errore")
+    // } else { res.json(post) }
+    const sql = "SELECT * FROM ``"
 
 }
 function create(req, res) {

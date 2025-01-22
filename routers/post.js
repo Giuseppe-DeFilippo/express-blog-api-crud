@@ -1,15 +1,15 @@
 const express = require("express");
-const { index, create, update, show, elimina, tagSearch } = require("../controllers/postControllers");
+const { index, show, create, update, elimina, tagSearch } = require("../controllers/postControllers.js");
 const router = express.Router();
 
-router.get("", index);
+router.get("/", index);
 
 //show
 router.get("/:id", show);
 
 //create
 
-router.post("", create);
+router.post("/", create);
 
 //update per modificare un elemento
 
